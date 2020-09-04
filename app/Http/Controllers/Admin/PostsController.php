@@ -5,12 +5,11 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class adminController extends Controller
+class PostsController extends Controller
 {
     //
     public function index()
     {
-        return view('admin.dashboard');
+        return view('admin.posts.index');
     }
-   
 }

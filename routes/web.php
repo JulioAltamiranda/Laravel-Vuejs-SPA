@@ -13,4 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'Admin\adminController@index');
+
+Route::namespace('admin')->prefix('admin')->group(function () {
+    Route::get('/', 'adminController@index');
+    Route::get('posts','PostsController@index');
+});
