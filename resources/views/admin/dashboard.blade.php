@@ -1,114 +1,73 @@
 @extends('admin.layouts.master')
-@section('page-titles')
-<div class="col-md-5 align-self-center">
-    
-</div>
-<div class="col-md-7 align-self-center text-right">
-    <div class="d-flex justify-content-end align-items-center">
-        <ol class="breadcrumb pr-2">
-            <li class="breadcrumb-item active">Inicio</li>
-        </ol>
-        {{-- <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button> --}}
-    </div>
-</div>
-@endsection
 @section('content')
-    <div class="col-12">
-        <div class="card-group">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="d-flex no-block align-items-center">
-                                <div>
-                                    <h3><i class="icon-user"></i></h3>
-                                    <p class="text-muted">Usuarios</p>
-                                </div>
-                                <div class="ml-auto">
-                                    <h2 class="counter text-primary">23</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="progress">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+    @if(auth()->user()->hasRole('admin'))
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="ti-layout-media-right-alt text-warning"></i>
+                        <div class="mt-3">
+                            <h3 class="card-title">{{$posts}}</h3>
+                            <span class="d-block">Posts</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Column -->
-            <!-- Column -->
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="d-flex no-block align-items-center">
-                                <div>
-                                    <h3><i class="icon-note"></i></h3>
-                                    <p class="text-muted">Posts</p>
-                                </div>
-                                <div class="ml-auto">
-                                    <h2 class="counter text-cyan">169</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="progress">
-                                <div class="progress-bar bg-cyan" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="ti-user text-secondary" ></i>
+                        <div class="mt-3">
+                            <h3 class="card-title">{{$users}}</h3>
+                            <span class="d-block">Usuarios</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Column -->
-            <!-- Column -->
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="d-flex no-block align-items-center">
-                                <div>
-                                    <h3><i class="ti-hand-open"></i></h3>
-                                    <p class="text-muted">Roles</p>
-                                </div>
-                                <div class="ml-auto">
-                                    <h2 class="counter text-purple">157</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="progress">
-                                <div class="progress-bar bg-purple" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="ti-hand-open text-info" ></i>
+                        <div class="mt-3">
+                            <h3 class="card-title">{{$roles}}</h3>
+                            <span class="d-block">Roles</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Column -->
-            <!-- Column -->
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="d-flex no-block align-items-center">
-                                <div>
-                                    <h3><i class="ti-key"></i></h3>
-                                    <p class="text-muted">Permisos</p>
-                                </div>
-                                <div class="ml-auto">
-                                    <h2 class="counter text-success">431</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="progress">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="ti-key text-danger" ></i>
+                        <div class="mt-3">
+                            <h3 class="card-title">{{$permissions}}</h3>
+                            <span class="d-block">Permisos</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @else
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <i class="ti-layout-media-right-alt text-warning"></i>
+                    <div class="mt-3">
+                        <h3 class="card-title">{{auth()->user()->posts->count()}}</h3>
+                        <span class="d-block">Posts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection
+@push('styles')
+    <style>
+        .card-body i{
+            font-size: 27px!important;
+            font-weight: bold;
+        }
+    </style>
+@endpush

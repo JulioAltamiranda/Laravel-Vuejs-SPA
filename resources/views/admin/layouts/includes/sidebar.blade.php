@@ -1,52 +1,85 @@
-<nav class="sidebar-nav">
-    <ul id="sidebarnav">
-        <li>
-            <a class="waves-effect waves-dark" href="http://eliteadmin.themedesigner.in/demos/bt4/documentation/documentation.html" aria-expanded="false">
-                <i class="ti-home"></i>
-                <span class="hide-menu">Inicio</span>
-            </a>
-        </li>
-        <li>
-            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                <i class="ti-layout-media-right-alt"></i>
-                <span class="hide-menu">Blog                    
-                </span>
-            </a>
-            <ul aria-expanded="false" class="collapse">
-                <li>
-                    <a href="index.html">Todos los posts </a>
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <h4><i class="fab fa-airbnb"></i>Airbnb</h4>
+        <i class="fas fa-times close-btn"></i>
+    </div>
+    <div class="sidebar-menu">
+        <ul>
+            <li class="menu-item">
+                <a href="{{ route('admin') }}">
+                    <span><i class="ti-home"></i>Inicio</span>
+                </a>
+            </li>
+            @if (auth()->user()->hasPermissionTo('posts.index') || auth()->user()->hasPermissionTo('posts.create'))
+                <li class="menu-item">
+                    <a href="javascript:void(0)" class="side-menu">
+                        <span><i class="ti-layout-media-right-alt"></i>Blog</span>
+                        <i class="ti-angle-right"></i>
+                    </a>
+                    <ul class="submenu">
+                        @can('posts.index', auth()->user())
+                            <li>
+                                <a href="{{ route('admin.posts') }}">Todos los posts </a>
+                            </li>
+                        @endcan
+                        @can('posts.create', auth()->user())
+                            <li>
+                                <a href="{{ route('admin.posts.create') }}">Crear un post</a>
+                            </li>
+                        @endcan
+                    </ul>
                 </li>
-                <li>
-                    <a href="index2.html">Crear un post</a>
+            @endif
+
+            @if(auth()->user()->hasRole('admin'))
+                <li class="menu-item">
+                    <a href="javascript:void(0)" class="side-menu">
+                        <span><i class="ti-user"></i>Usuarios</span>
+                        <i class="ti-angle-right"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="{{ route('admin.users') }} ">Todos los usuarios </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.users.create') }}">Crear un usuario</a>
+                        </li>
+                    </ul>
                 </li>
-            </ul>
-        </li>
-        <li>
-            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                <i class="ti-user"></i>
-                <span class="hide-menu">Usuarios
-                </span>
-            </a>
-            <ul aria-expanded="false" class="collapse">
-                <li>
-                    <a href="index.html">Todos los usuarios </a>
+            @elseif(auth()->user()->hasPermissionTo('users.index'))   
+                <li class="menu-item">
+                    <a href="{{ route('admin.users') }}">
+                        <span><i class="ti-user"></i>Mi usuario</span>
+                    </a>
                 </li>
-                <li>
-                    <a href="index2.html">Crear un usuario</a>
+            @endif
+            @if(auth()->user()->hasPermissionTo('roles.index') || auth()->user()->hasPermissionTo('roles.create'))
+                <li class="menu-item">
+                    <a href="javascript:void(0)" class="side-menu">
+                        <span><i class="ti-hand-open"></i>Roles</span>
+                        <i class="ti-angle-right"></i>
+                    </a>
+                    <ul class="submenu">
+                        @can('roles.index', auth()->user())
+                            <li>
+                                <a href="{{ route('admin.roles') }} ">Todos los roles </a>
+                            </li>
+                        @endcan
+                        @can('roles.create', auth()->user())
+                            <li>
+                                <a href="{{ route('admin.roles.create') }}">Crear un role</a>
+                            </li>
+                        @endcan
+                    </ul>
                 </li>
-            </ul>
-        </li>
-        <li>
-            <a class="waves-effect waves-dark" aria-expanded="false">
-                <i class="ti-hand-open"></i>
-                <span class="hide-menu">Roles</span>
-            </a>
-        </li>
-        <li>
-            <a class="waves-effect waves-dark" aria-expanded="false">
-                <i class="ti-key"></i>
-                <span class="hide-menu">Permisos</span>
-            </a>
-        </li>
-    </ul>
-</nav>
+            @endif
+            @can('permissions.index', auth()->user())
+                <li class="menu-item">
+                    <a href="{{ route('admin.permissions') }}">
+                        <span><i class="ti-key"></i>Permisos</span>
+                    </a>
+                </li>
+            @endcan
+        </ul>
+    </div>
+</div>
