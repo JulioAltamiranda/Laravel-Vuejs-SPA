@@ -18,8 +18,8 @@ Administracion de un blog en laravel 7 con roles y permisos usando el paquete sp
 8. Cargar las dependencias del proyecto con el comando: `composer install`
 9. Generar una llave para el proyecto: `php artisan key:generate`
 10. Ejecuta las migraciones y seeds: `php artisan migrate --seed`
-11. Por último ejecuta: `php artisan storage:link`
-
+11. Ejecuta el servidor: `php artisan serve`
+12. Inicia sesion con el usuario: 'admin@admin.com', password:'123123'
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
