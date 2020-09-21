@@ -18,7 +18,7 @@ class PermissionsTableSeeder extends Seeder
     {
         //
         //Permission list
-        Permission::create(['name' => 'dashboard', 'display_name' => 'Ver dashboard']);
+    
         
         Permission::create(['name' => 'posts.index', 'display_name' => 'Listado de posts']);
         Permission::create(['name' => 'posts.update', 'display_name' => 'Editar posts']);
@@ -56,7 +56,6 @@ class PermissionsTableSeeder extends Seeder
         $admin = Role::create(['name' => 'admin', 'display_name' => 'administrador']);
         $guest = Role::create(['name' => 'guest', 'display_name' => 'invitado']);
         $guest->givePermissionTo([
-            'dashboard',
             'posts.index',
             'posts.create',
             'posts.show',
@@ -68,7 +67,6 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         $admin->givePermissionTo([
-            'dashboard',
             'posts.index',
             'posts.create',
             'posts.update',
