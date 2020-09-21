@@ -6,7 +6,7 @@ Administracion de un blog en laravel 7 con roles y permisos usando el paquete sp
 !["preview"](https://github.com/Juliosgd/blog-with-admin-panel/blob/master/public/assets/images/screenshot.png "preview")	
 
 ## instalación
-1. Selecciona un lugar en la pc para guardar el proyecto, en mi caso, como utilizo laragon guardo mis proyectos en E:/laragon/www
+1. Selecciona un lugar en la pc para guardar el proyecto, en mi caso, como utilizo laragon guardo mis proyectos en E:/laragon/www/
 2. Descarga el repositorio 
 3. Descromprime la carpeta en el directorio, en mi caso E:/laragon/www/
 4. Una vez el proyecto descomprimido, copia el contenido de .env.example a un nuevo archivo llamado .env
