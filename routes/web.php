@@ -20,7 +20,6 @@ Route::namespace('admin')->prefix('admin')->group(function () {
 // Rutas admin
 Route::middleware('auth')->namespace('admin')->prefix('dashboard')->group(function () {
     //posts
-    Route::get('prueba2', 'admin\adminController@prueba')->name('admin.prueba');
     Route::get('/', 'adminController@index')->name('admin');
     Route::get('posts', 'PostsController@index')->name('admin.posts')->middleware('permission:posts.index');
     Route::get('posts/create', 'PostsController@create')->name('admin.posts.create')->middleware('permission:posts.create');
@@ -28,8 +27,8 @@ Route::middleware('auth')->namespace('admin')->prefix('dashboard')->group(functi
     Route::get('posts/edit/{post}', 'PostsController@edit')->name('admin.posts.edit')->middleware('permission:posts.update');
     Route::put('posts/{post}', 'PostsController@update')->name('admin.posts.update')->middleware('permission:posts.update');
     Route::delete('posts/{post}', 'PostsController@destroy')->name('admin.posts.destroy')->middleware('permission:posts.destroy');
-    Route::post('prueba/images/{post}', 'PostsImagesController@store')->name('admin.posts.images.store');
-    Route::get('posts/images/{post}', 'PostsImagesController@index')->name('admin.posts.images')->middleware('permission:posts.images.index');
+    Route::get('posts/img/{post}', 'PostsImagesController@index')->name('admin.posts.images')->middleware('permission:posts.images.index');
+    Route::post('posts/{post}/images', 'PostsImagesController@store')->name('admin.posts.images.store');
     //users
     Route::get('users', 'UsersController@index')->name('admin.users')->middleware('permission:users.index');
     Route::get('users/create', 'UsersController@create')->name('admin.users.create')->middleware('permission:users.create');

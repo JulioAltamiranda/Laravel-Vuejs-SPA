@@ -76,7 +76,7 @@
 
     <script>
         var myDropzone = new Dropzone('.dropzone', {
-            url: '/admin/prueba/images/{{ $post->id }}',
+            url: '/dashboard/posts/{{ $post->id }}/images',
             paramName: 'image',
             acceptedFiles: 'image/*',
             headers: {
