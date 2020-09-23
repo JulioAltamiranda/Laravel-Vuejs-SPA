@@ -22,7 +22,4 @@ class adminController extends Controller
             'permissions' => Permission::all()->count(),
         ]);
     }
-    public function prueba(){
-        return view('admin.prueba');
-    }
 }
