@@ -27,6 +27,7 @@ Route::middleware('auth')->namespace('admin')->prefix('dashboard')->group(functi
     Route::get('posts/edit/{post}', 'PostsController@edit')->name('admin.posts.edit')->middleware('permission:posts.update');
     Route::put('posts/{post}', 'PostsController@update')->name('admin.posts.update')->middleware('permission:posts.update');
     Route::delete('posts/{post}', 'PostsController@destroy')->name('admin.posts.destroy')->middleware('permission:posts.destroy');
+    Route::delete('posts/{image}/image/destroy','PostsImagesController@destroy')->name('admin.posts.images.destroy');
     Route::get('posts/img/{post}', 'PostsImagesController@index')->name('admin.posts.images')->middleware('permission:posts.images.index');
     Route::post('posts/{post}/images', 'PostsImagesController@store')->name('admin.posts.images.store');
     //users

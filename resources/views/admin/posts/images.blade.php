@@ -26,10 +26,15 @@
                         </div>
                         <div class="card-body">
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
+                                <div class="carousel-inner" >
                                     @foreach($post->images as $image)
-                                        <div class="{{$loop->first?'carousel-item active':'carousel-item'}}">
-                                        <img src="{{$image->name}}" class="img-fluid" alt="">
+                                        <div  class="{{$loop->first?'carousel-item active':'carousel-item'}}">
+                                        <img src="{{$image->name}}" class="img-fluid" alt="" style="position: relative;">
+                                        <form action="{{route('admin.posts.images.destroy',$image)}}" style="position: absolute;top:0px;z-index:101;" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-danger btn-sm" data-toggle="tooltip" title="Eliminar imagen"><i class="fas fa-backspace"  style="font-size: 15px;"></i></button>
+                                        </form>
                                         </div>
                                     @endforeach
                                 </div>

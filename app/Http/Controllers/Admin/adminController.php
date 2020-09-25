@@ -14,7 +14,6 @@ class adminController extends Controller
     //
     public function index()
     {
-
         return view('admin.dashboard', [
             'users' => User::all()->count(),
             'posts' => Post::all()->count(),
