@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::namespace('admin')->prefix('admin')->group(function () {
-    Route::get('/', 'adminController@index');
-    Route::get('posts', 'PostsController@index');
-});
 // Rutas admin
 Route::middleware('auth')->namespace('admin')->prefix('dashboard')->group(function () {
     //posts
