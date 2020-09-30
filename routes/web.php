@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -49,10 +50,8 @@ Route::middleware('auth')->namespace('admin')->prefix('dashboard')->group(functi
 
 Auth::routes(['register' => false, 'reset' => false, 'confirm' => false, 'verify' => false]);
 
-Route::get('/', function () {
-    if (auth()->check()) {
-        return redirect('admin');
-    } else {
-        return redirect('/login');
-    }
-});
+
+//Rutas frontend
+Route::get('/{any}',function(){
+    return view('home');
+})->where('any','.*');

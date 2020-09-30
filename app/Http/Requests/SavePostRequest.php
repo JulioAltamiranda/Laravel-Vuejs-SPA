@@ -28,6 +28,7 @@ class SavePostRequest extends FormRequest
             'title' => 'required',
             'description' => 'required',
             'category_id' => 'required',
+            'iframe'=>'nullable'
         ];
     }
 }

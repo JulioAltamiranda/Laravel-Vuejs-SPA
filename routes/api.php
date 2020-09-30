@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// 
+Route::get('posts','api\PostsController@index');
+Route::get('posts/latest','api\PostsController@latest');
+Route::get('posts/authors','api\PostsController@authors');
+Route::get('posts/{id}','api\PostsController@show');
+Route::get('categories','api\CategoriesController@index');
+Route::get('categories/posts/{id}','api\CategoriesController@posts');
+Route::get('tags','api\TagsController@index');
+Route::get('tags/posts/{id}','api\TagsController@posts');

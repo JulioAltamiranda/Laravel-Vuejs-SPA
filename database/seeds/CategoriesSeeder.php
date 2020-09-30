@@ -13,8 +13,8 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
         //
-        Category::create(['name'=>'música']);
-        Category::create(['name'=>'comida']);
+        Category::create(['name'=>'Diseño web']);
+        Category::create(['name'=>'Desarrollo de apps']);
 
 
     }

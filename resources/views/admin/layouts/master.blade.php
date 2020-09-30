@@ -26,7 +26,7 @@
         <!-- End Sidebar -->
 
         <!-- Main -->
-        <div class="main">
+        <div class="main overflow-hidden">
             <div class="topbar">
                 <i  class="fas fa-bars bar-btn"></i>
                 <div class="user-profile">

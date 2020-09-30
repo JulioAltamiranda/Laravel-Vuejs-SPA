@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="description">Descripción del post<span class="secondary">*</span></label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" id="description"
@@ -83,10 +83,10 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="">Iframe</label>
-                                <textarea id="iframe" name="iframe" class="form-control"></textarea>
+                                <label for="">Iframe <small class="text-muted">(opcional)</small></label>
+                                <textarea id="iframe" style="min-height:160px; " name="iframe" class="form-control">{{old('iframe')}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -120,14 +120,7 @@
                 console.log(error);
             });
 
-        ClassicEditor
-            .create(document.querySelector('#iframe'), {
-                toolbar: ['|', 'bold','numberedList', 'blockQuote'],
-
-            })
-            .catch(error => {
-                console.log(error);
-            });
+       
 
     </script>
 @endpush

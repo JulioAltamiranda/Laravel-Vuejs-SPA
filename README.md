@@ -17,7 +17,15 @@ Administracion de un blog en laravel 7 con roles y permisos usando el paquete sp
 * DB_DATABASE=
 * DB_USERNAME=
 * DB_PASSWORD=
-9. Carga las dependencias del proyecto con el comando: `composer install`
+9. Carga las dependencias del proyecto con el comando: 
+* 
+```
+Composer install
+```
+* 
+```
+npm install
+```
 10. Genera una llave para el proyecto: `php artisan key:generate`
 11. Ejecuta las migraciones y seeds: `php artisan migrate --seed`
 12. Ejecuta el servidor: `php artisan serve`

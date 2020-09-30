@@ -15,7 +15,6 @@ class PostsController extends Controller
     public function index()
     {
         if(auth()->user()->hasRole('admin')){
-
             $posts=Post::all();
         }else{
             $posts = Post::whereUserId(auth()->user()->id)->with(['category:id,name', 'user:id,name'])->get();
@@ -32,13 +31,13 @@ class PostsController extends Controller
     public function store(SavePostRequest $request)
     {
         $tags = [];
-
-        foreach ($request->tags as $tag) {
-            $tags[] = Tag::find($tag) ? $tag : Tag::create(['name' => $tag])->id;
+        if($request->tags){
+            foreach ($request->tags as $tag) {
+                $tags[] = Tag::find($tag) ? $tag : Tag::create(['name' => $tag])->id;
+            }
         }
         
-        
-        $post = Post::create($request->validated());
+        $post = Post::create($request->all());
         $post->tags()->sync($tags);
         $post->user_id = auth()->user()->id;
         $post->save();
@@ -46,7 +45,7 @@ class PostsController extends Controller
     }
     public function edit(Post $post)
     {
-        // $this->authorize('view', $post);
+
         return view('admin.posts.edit', [
             'post' => $post,
             'categories' => Category::all(),
@@ -55,18 +54,18 @@ class PostsController extends Controller
     }
     public function update(SavePostRequest $request, Post $post)
     {
-        // $this->authorize('update', $post);
         $tags = [];
-        foreach ($request->tags as $tag) {
-            $tags[] = Tag::find($tag) ? $tag : Tag::create(['name' => $tag])->id;
+        if($request->tags){
+           foreach ($request->tags as $tag) {
+               $tags[] = Tag::find($tag) ? $tag : Tag::create(['name' => $tag])->id;
+           }
         }
-        $post->update($request->validated());
+        $post->update($request->all());
         $post->tags()->sync($tags);
         return redirect()->route('admin.posts.edit', $post)->with('status', 'Se ha guardado un post');
     }
     public function destroy(Post $post)
     {
-        // $this->authorize('delete', $post);
         if($post->images){
             foreach($post->images as $image){
 

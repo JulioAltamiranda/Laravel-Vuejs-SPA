@@ -1,0 +1,91 @@
+/*============= HEADER =============*/
+header{
+    background: #1c262b;
+    box-shadow: 1px 1px 16px 1px #e1f6ff73;
+    padding: 0;
+    transition: all .4s ease;
+    .topBar{
+        width: 65%;
+        margin: auto;
+        color: rgba(225, 246, 255, 0.45);        
+        @media screen and (max-width:997px){
+            width: 95%;
+        }
+        .navbar{
+            padding: 1em 0;
+            .navbar-menu{
+                display: flex;
+                align-items: center;
+                list-style: none;
+                justify-content: center;
+                transition: all .5s ease;
+                li{
+                    margin: 0 12px 0;
+                    font-weight: 500;
+                    a{
+                        color: #e1f6ff73;
+                        text-transform: uppercase;
+                        font-size: 14px;
+                        transition: all .4s ease;
+                        &:hover{
+                            color: #fff;
+                        }
+                        &.router-link-exact-active {
+                            color: #fff;
+                        }  
+                    }
+                }
+                @media screen and (max-width:997px){
+                    display: none;
+                }
+            }
+            .mobile-menu{
+                i{
+                    font-size: 30px;
+                    color: white!important;
+                    display: none;
+                    @media screen and (max-width:997px){
+                        display: block;
+                    }
+                }
+                ul{
+                    list-style: none;
+                    transition: all .2s ease;
+                    height: 0;
+                    visibility: hidden;
+                    opacity: 0;
+                    li{
+                        border: 1px solid white;
+                        border-width: 100%;
+                        padding: 10px;
+                        a{
+                            color:#e1f6ff73;
+                            transition: all .4s ease;
+                            &:hover{
+                                color: white;
+                            }
+                            &.router-link-exact-active {
+                                color: #fff;
+                            }  
+                        }
+                    }
+                }
+                ul.active{
+                    visibility: visible;
+                    margin-top: 14px;
+                    opacity: 1;
+                    height: 170px;   
+                }
+            }
+            
+        }
+    }
+}
+header.sticky{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0.3em;
+}
+/*============= /HEADER =============*/
