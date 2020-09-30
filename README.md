@@ -2,8 +2,10 @@
 
 Administracion de un blog en laravel 7 con roles y permisos usando el paquete spatie/laravel-permission, bootstrap 4, jquery y datatable
 
-## Vista previa
-!["preview"](https://github.com/Juliosgd/blog-with-admin-panel/blob/master/public/assets/images/screenshot.png "preview")	
+## Vista previa de la aministración en laravel
+!["preview"](https://github.com/Julioous/Laravel-Vuejs-SPA/blob/master/public/assets/images/screenshot.png "preview")	
+## Vista previa del SPA en Vuejs
+!["preview"](https://github.com/Julioous/Laravel-Vuejs-SPA/blob/master/public/assets/images/screenshot2.png "preview")	
 
 ## Instalación
 1. Selecciona un lugar en la pc para guardar el proyecto, en mi caso, como utilizo laragon guardo mis proyectos en E:/laragon/www/
@@ -17,20 +19,20 @@ Administracion de un blog en laravel 7 con roles y permisos usando el paquete sp
 * DB_DATABASE=
 * DB_USERNAME=
 * DB_PASSWORD=
-9. Carga las dependencias del proyecto con el comando: 
-* 
+9. Carga las dependencias del proyecto con el comando:  
 ```
-Composer install
+composer install
 ```
-* 
 ```
 npm install
 ```
 10. Genera una llave para el proyecto: `php artisan key:generate`
 11. Ejecuta las migraciones y seeds: `php artisan migrate --seed`
-12. Ejecuta el servidor: `php artisan serve`
-13. Inicia sesión con el usuario: admin@admin.com y password: 123123
-14. Por último deberas ejecutar el comando `php artisan storage:link` luego de haber creado una imagen por lo menos de un post
+12. Ejecuta el comando `php artisan storage:link`
+13. Ejecuta el servidor: `php artisan serve`
+14. Inicia sesión con el usuario:
+* Administrador: ```admin@admin.com``` password:```123123```
+* Invitado: ```julio@julio.com``` o ```javier@javier.com``` password:```123123```
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
