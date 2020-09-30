@@ -9,6 +9,6 @@ use Faker\Generator as Faker;
 $factory->define(Image::class, function (Faker $faker) {
     return [
         //
-        'name'=>'/storage/posts/'.$faker->image(storage_path().'/app/public/posts/',640,400,'business',false)
+        'name'=>'/storage/posts/'.$faker->image(storage_path().'/app/public/posts/',470,320,'business',false)
     ];
 });
