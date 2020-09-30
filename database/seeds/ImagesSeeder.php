@@ -16,16 +16,15 @@ class ImagesSeeder extends Seeder
     {
         //
         Storage::disk('public')->deleteDirectory('posts');
-        $filepath = public_path('storage/posts');
-
-        if(!File::exists($filepath)){
-            File::makeDirectory($filepath);
-        }
-        for ($i=0; $i <5 ; $i++) { 
-            factory(Image::class,2)->create([
-                'post_id'=> $i
-            ]);
-        }
+        Storage::disk('public')->makeDirectory('posts');
+        
+        factory(Image::class,2)->create([
+            'post_id'=> 1
+        ]);
+        factory(Image::class)->create([
+            'post_id'=> 2
+        ]);
+        
         
       
     }
