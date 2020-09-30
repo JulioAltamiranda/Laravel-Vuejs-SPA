@@ -329,3 +329,9 @@ ul {
     background: #c8d6e5;
     
 }
+/* Table custom */
+
+
+#myTable i{
+  font-size: 14px;
+}

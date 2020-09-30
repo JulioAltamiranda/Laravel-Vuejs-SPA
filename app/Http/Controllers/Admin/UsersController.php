@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveUserRequest;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
@@ -58,14 +59,28 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         $this->authorize('delete', $user);
+        //removing tags from posts
+        foreach($user->posts as $post){
+            
+            $post->tags()->detach();
+            
+        }
+        //removing images from posts
+        foreach($user->posts as $post){
+            if($post->images){
+                foreach($post->images as $image){
+                    $imageName=str_replace('storage','public',$image->name);
+                    Storage::delete($imageName);
+                }
+                $post->images()->delete();
+            }
+        }
+        //removing posts from user
         $user->posts()->delete();
         $user->delete();
         return redirect()->route('admin.users')->with('status', 'Usuario eliminado');
     }
-    // public function show(User $user){
-    //     $this->authorize('view', $user);
-    //     return view('admin.users.show',compact('user'));
-    // }
+
     public function prueba(){
         return view('admin.prueba');
     }

@@ -73,9 +73,6 @@ class PermissionsTableSeeder extends Seeder
             'posts.show',
             'posts.destroy',
             'posts.images.index',
-
-
-
             'users.index',
             'users.create',
             'users.update',
@@ -91,8 +88,10 @@ class PermissionsTableSeeder extends Seeder
         //User Admin
 
         $user = User::create(['name'=>'admin','email'=>'admin@admin.com','password'=>bcrypt('123123')]);
-        $user2 = User::create(['name'=>'guest','email'=>'guest@guest.com','password'=>bcrypt('123123')]); //Italo Morales
+        $user2 = User::create(['name'=>'Julio farias','email'=>'julio@julio.com','password'=>bcrypt('123123')]);
+        $user3 = User::create(['name'=>'Javier','email'=>'javier@javier.com','password'=>bcrypt('123123')]);
         $user->assignRole('admin');
         $user2->assignRole('guest');
+        $user3->assignRole('guest');
     }
 }

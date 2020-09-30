@@ -23,19 +23,17 @@
                         </thead>
                         <tbody>
                             @foreach ($posts as $post)
-
                                 <tr>
                                     <td>{{ $post->title }}</td>
-                                    <td>{!! $post->description !!}</td>
+                                    <td>{!!  Str::limit($post->description, 20)  !!}</td>
                                     <td>{{ $post->category->name }}</td>
                                     <td>{{ $post->created_at }}</td>
                                     <td>{{ $post->user->name }}</td>
-                                    
                                     @if(auth()->user()->can('posts.update')||auth()->user()->can('posts.destroy')||auth()->user()->can('posts.show')
                                     ||auth()->user()->can('posts.images.index'))
                                     <td>
                                         @can('posts.show', auth()->user())
-                                        <a href="" class="btn btn-sm btn-secondary text-white" data-toggle="tooltip"
+                                        <a href="http://127.0.0.1:8000/posts/{{$post->id}}" class="btn btn-sm btn-secondary text-white" data-toggle="tooltip"
                                             title="Ver post"><i class="ti-eye font-bold"></i></a>
                                         @endcan
                                         @can('posts.images.index', auth()->user())

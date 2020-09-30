@@ -13,13 +13,13 @@
     </div>
 @endsection
 @section('content')
-    <div class="col-12">
+    <div class="col-9">
         <div class="card">
             <div class="card-header d-flex align-items-center">
                 <h5 class="card-title py-4">Actualizar post</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.posts.update', $post) }}" method="POST" class="mt-4">
+                <form action="{{ route('admin.posts.update', $post) }}" method="POST">
                     @method('put')
                     @csrf
                     <div class="row">
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="description">Descripción del post</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" id="description"
@@ -81,10 +81,10 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Iframe <small class="text-muted">(opcional)</small></label>
-                                <textarea id="iframe" name="iframe" class="form-control">{!!old('iframe', $post->iframe)!!}</textarea>
+                                <textarea id="iframe" style="min-height:160px; " name="iframe" class="form-control">{{old('iframe', $post->iframe)}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -118,14 +118,7 @@
                 console.log(error);
             });
 
-        ClassicEditor
-            .create(document.querySelector('#iframe'), {
-                toolbar: ['|', 'bold','numberedList', 'blockQuote'],
-
-            })
-            .catch(error => {
-                console.log(error);
-            });
+      
 
     </script>
 @endpush
