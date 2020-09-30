@@ -13,7 +13,7 @@
     </div>
 @endsection
 @section('content')
-    <div class="col-9">
+    <div class="col-12">
         <div class="card">
             <div class="card-header d-flex align-items-center">
                 <h5 class="card-title py-4">Actualizar post</h5>
