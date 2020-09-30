@@ -15,7 +15,9 @@ class ImagesSeeder extends Seeder
     public function run()
     {
         //
-        Storage::disk('public')->deleteDirectory('posts');
+        if(Storage::has('posts')){
+            Storage::disk('public')->deleteDirectory('posts');
+        }
         Storage::disk('public')->makeDirectory('posts');
         
         factory(Image::class,2)->create([
