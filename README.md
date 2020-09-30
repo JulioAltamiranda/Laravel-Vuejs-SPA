@@ -30,7 +30,7 @@ npm install
 11. Ejecuta las migraciones y seeds: `php artisan migrate --seed`
 12. Ejecuta el comando `php artisan storage:link`
 13. Ejecuta el servidor: `php artisan serve`
-14. Inicia sesión con el usuario:
+14. Dirigete a la ruta /dashboard e inicia sesión con el usuario:
 * Administrador: ```admin@admin.com``` password:```123123```
 * Invitado: ```julio@julio.com``` o ```javier@javier.com``` password:```123123```
 ## License
