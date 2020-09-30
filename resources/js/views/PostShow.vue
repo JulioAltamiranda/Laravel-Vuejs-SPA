@@ -8,7 +8,7 @@
                     </div>
                 </transition>
                 <div class="posts">
-                    <div class="post">
+                    <div class="post" v-if="!show">
                         <div class="post-img" v-if="post.images && post.images.length">
                             <carousel :per-page="1" >
                                 <slide
@@ -57,7 +57,7 @@ export default {
     data() {
         return {
             post: "",
-            show:true
+            show:true,
         };
     },
     created() {

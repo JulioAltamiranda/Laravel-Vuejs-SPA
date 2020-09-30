@@ -7,7 +7,7 @@
                         <div class="loading"></div>
                     </div>
                 </transition>
-                <posts :posts="posts"></posts>
+                <posts :posts="posts" v-if="!show"></posts>
             </main>
         </template>
     </layout>

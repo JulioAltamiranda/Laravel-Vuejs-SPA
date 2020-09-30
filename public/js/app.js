@@ -2723,7 +2723,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       posts: '',
-      paginate: ['postsPaginate'],
       show: true
     };
   },
@@ -39473,7 +39472,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.posts.length
+      !_vm.show
         ? _c("posts", { attrs: { posts: _vm.posts } })
         : _c("p", [_vm._v("No se encontraron posts")])
     ],
@@ -39719,78 +39718,82 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "posts" }, [
-              _c("div", { staticClass: "post" }, [
-                _vm.post.images && _vm.post.images.length
-                  ? _c(
-                      "div",
-                      { staticClass: "post-img" },
-                      [
-                        _c(
-                          "carousel",
-                          { attrs: { "per-page": 1 } },
-                          _vm._l(_vm.post.images, function(image) {
-                            return _c("slide", { key: image.id }, [
-                              _c("img", { attrs: { src: image.name, alt: "" } })
-                            ])
-                          }),
+              !_vm.show
+                ? _c("div", { staticClass: "post" }, [
+                    _vm.post.images && _vm.post.images.length
+                      ? _c(
+                          "div",
+                          { staticClass: "post-img" },
+                          [
+                            _c(
+                              "carousel",
+                              { attrs: { "per-page": 1 } },
+                              _vm._l(_vm.post.images, function(image) {
+                                return _c("slide", { key: image.id }, [
+                                  _c("img", {
+                                    attrs: { src: image.name, alt: "" }
+                                  })
+                                ])
+                              }),
+                              1
+                            )
+                          ],
                           1
                         )
-                      ],
-                      1
+                      : _vm.post.iframe != ""
+                      ? _c("div", {
+                          staticClass: "iframe",
+                          domProps: { innerHTML: _vm._s(_vm.post.iframe) }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "category" }, [
+                      _vm._v(_vm._s(_vm.post.category.name))
+                    ]),
+                    _vm._v(" "),
+                    _c("h2", [_vm._v(_vm._s(_vm.post.title) + ".")]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "post-meta" }, [
+                      _c("p", { staticClass: "owner" }, [
+                        _vm._v(_vm._s(_vm.post.user.name))
+                      ]),
+                      _vm._v(" "),
+                      _c("span"),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "post-date" }, [
+                        _vm._v(_vm._s(_vm.post.created_at))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      {
+                        staticClass: "post-text",
+                        domProps: { innerHTML: _vm._s(_vm.post.description) }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.post.description) +
+                            "\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "content-tags" },
+                      _vm._l(_vm.post.tags, function(tag) {
+                        return _c("a", { key: tag.id, attrs: { href: "" } }, [
+                          _vm._v(_vm._s(tag.name))
+                        ])
+                      }),
+                      0
                     )
-                  : _vm.post.iframe != ""
-                  ? _c("div", {
-                      staticClass: "iframe",
-                      domProps: { innerHTML: _vm._s(_vm.post.iframe) }
-                    })
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("p", { staticClass: "category" }, [
-                  _vm._v(_vm._s(_vm.post.category.name))
-                ]),
-                _vm._v(" "),
-                _c("h2", [_vm._v(_vm._s(_vm.post.title) + ".")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "post-meta" }, [
-                  _c("p", { staticClass: "owner" }, [
-                    _vm._v(_vm._s(_vm.post.user.name))
-                  ]),
-                  _vm._v(" "),
-                  _c("span"),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "post-date" }, [
-                    _vm._v(_vm._s(_vm.post.created_at))
                   ])
-                ]),
-                _vm._v(" "),
-                _c("hr"),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  {
-                    staticClass: "post-text",
-                    domProps: { innerHTML: _vm._s(_vm.post.description) }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.post.description) +
-                        "\n                    "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "content-tags" },
-                  _vm._l(_vm.post.tags, function(tag) {
-                    return _c("a", { key: tag.id, attrs: { href: "" } }, [
-                      _vm._v(_vm._s(tag.name))
-                    ])
-                  }),
-                  0
-                )
-              ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "post" }, [
@@ -39965,7 +39968,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("posts", { attrs: { posts: _vm.posts } })
+            !_vm.show ? _c("posts", { attrs: { posts: _vm.posts } }) : _vm._e()
           ],
           1
         )
@@ -40373,7 +40376,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("posts", { attrs: { posts: _vm.posts } })
+            !_vm.show ? _c("posts", { attrs: { posts: _vm.posts } }) : _vm._e()
           ],
           1
         )

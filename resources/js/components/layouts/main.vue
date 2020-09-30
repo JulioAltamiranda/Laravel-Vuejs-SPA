@@ -10,7 +10,7 @@
       <categories :categories="categories"></categories>
       <tags :tags="tags"></tags>
     </div>
-    <posts :posts="posts" v-if="posts.length"></posts>
+    <posts :posts="posts" v-if="!show"></posts>
     <p v-else>No se encontraron posts</p>
   </main>
   <!-- End main -->
