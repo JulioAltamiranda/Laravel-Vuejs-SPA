@@ -27,15 +27,14 @@
                                     <td>{{ $user->posts->count() }}</td>
                                     @if(auth()->user()->can('users.update')
                                     ||auth()->user()->can('users.destroy'))  
-                                    <td>
+                                    <td class="options">
                                         @can('users.update', auth()->user())
                                         <a href="{{ route('admin.users.edit', $user) }}"
                                             class="btn btn-primary btn-sm text-white" data-toggle="tooltip"
                                             title="Editar usuario"><i class="ti-pencil font-bold"></i></a>
                                         @endcan
                                         @can('users.destroy', auth()->user())
-                                        <form action="{{ route('admin.users.destroy', $user) }}" method="POST"
-                                            style="display: inline;">
+                                        <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger btn-sm" data-toggle="tooltip"

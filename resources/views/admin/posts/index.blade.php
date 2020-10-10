@@ -31,7 +31,7 @@
                                     <td>{{ $post->user->name }}</td>
                                     @if(auth()->user()->can('posts.update')||auth()->user()->can('posts.destroy')||auth()->user()->can('posts.show')
                                     ||auth()->user()->can('posts.images.index'))
-                                    <td>
+                                    <td class="options">
                                         @can('posts.show', auth()->user())
                                         <a href="http://127.0.0.1:8000/posts/{{$post->id}}" class="btn btn-sm btn-secondary text-white" data-toggle="tooltip"
                                             title="Ver post"><i class="ti-eye font-bold"></i></a>
@@ -48,7 +48,7 @@
                                         @endcan
                                         @can('posts.destroy', auth()->user())
                                         <form action="{{ route('admin.posts.destroy', $post) }}" method="POST"
-                                            style="display: inline;">
+                                            >
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-sm btn-danger" data-toggle="tooltip"

@@ -15,6 +15,8 @@ class CategoriesController extends Controller
         }
     }
     public function posts($id){
-        return Category::find($id)->posts()->with(['category','user','tags','images'])->get();
+        if (request()->ajax()) {
+            return Category::find($id)->posts()->with(['category','user','tags','images'])->get();
+        }
     }
 }

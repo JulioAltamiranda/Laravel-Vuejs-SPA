@@ -24,7 +24,7 @@
                                     <td>{{ $role->name }}</td>
                                     <td>{{ $role->display_name}}</td>
                                     @if(auth()->user()->can('roles.update')||auth()->user()->can('roles.destroy')||auth()->user()->can('roles.show'))
-                                    <td>
+                                    <td class="options">
                                         @can('roles.show', auth()->user())
                                         <a href="{{route('admin.roles.show',$role)}}" class="btn btn-sm btn-secondary text-white" data-toggle="tooltip"
                                             title="Ver role"><i class="ti-eye font-bold"></i></a>

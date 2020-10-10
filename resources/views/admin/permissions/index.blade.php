@@ -34,7 +34,7 @@
                                 <tr>
                                     <td>{{ $permission->name }}</td>
                                     <td>{{ $permission->display_name }}</td>
-                                    <td>
+                                    <td class="options">
                                         <a href="{{ route('admin.permissions.edit', $permission) }}"
                                             class="btn btn-sm btn-primary text-white" data-toggle="tooltip"
                                             title="Editar permiso"><i class="ti-pencil font-bold"></i></a>
