@@ -2055,6 +2055,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2153,7 +2155,7 @@ __webpack_require__.r(__webpack_exports__);
     getPosts: function getPosts() {
       var _this = this;
 
-      axios.get("http://127.0.0.1:8000/api/posts").then(function (response) {
+      axios.get("/api/posts").then(function (response) {
         _this.posts = response.data;
         _this.show = false;
       })["catch"](function (error) {
@@ -2163,7 +2165,7 @@ __webpack_require__.r(__webpack_exports__);
     getCategories: function getCategories() {
       var _this2 = this;
 
-      axios.get('http://127.0.0.1:8000/api/categories').then(function (response) {
+      axios.get('/api/categories').then(function (response) {
         _this2.categories = response.data;
         _this2.show = false;
       })["catch"](function (error) {
@@ -2173,7 +2175,7 @@ __webpack_require__.r(__webpack_exports__);
     getTags: function getTags() {
       var _this3 = this;
 
-      axios.get('http://127.0.0.1:8000/api/tags').then(function (response) {
+      axios.get('/api/tags').then(function (response) {
         _this3.tags = response.data;
         _this3.show = false;
       })["catch"](function (error) {
@@ -2370,7 +2372,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     var ide = this.$route.params.id;
-    axios.get("http://127.0.0.1:8000/api/posts/" + ide).then(function (response) {
+    axios.get("/api/posts/" + ide).then(function (response) {
       _this.post = response.data;
       _this.show = false;
     });
@@ -2521,7 +2523,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     var ide = this.$route.params.id;
-    axios.get('http://127.0.0.1:8000/api/categories/posts/' + ide).then(function (response) {
+    axios.get('/api/categories/posts/' + ide).then(function (response) {
       _this.posts = response.data;
       _this.show = false;
     });
@@ -2730,7 +2732,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     var ide = this.$route.params.id;
-    axios.get('http://127.0.0.1:8000/api/tags/posts/' + ide).then(function (response) {
+    axios.get('/api/tags/posts/' + ide).then(function (response) {
       _this.posts = response.data;
       _this.show = false;
     });
@@ -39362,7 +39364,9 @@ var render = function() {
               ])
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _vm._m(0)
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "mobile-menu" }, [
@@ -39410,14 +39414,37 @@ var render = function() {
                 ])
               ],
               1
-            )
+            ),
+            _vm._v(" "),
+            _vm._m(1)
           ])
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "login" }, [
+      _c("a", { attrs: { href: "http://127.0.0.1:8000/dashboard" } }, [
+        _vm._v("Ingresar")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "login" }, [
+      _c("a", { attrs: { href: "http://127.0.0.1:8000/dashboard" } }, [
+        _vm._v("Ingresar")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -59630,8 +59657,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\Spa laravel y vuejs\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\Spa laravel y vuejs\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\Laravel Vuejs SPA\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\Laravel Vuejs SPA\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

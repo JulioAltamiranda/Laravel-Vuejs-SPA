@@ -9,10 +9,14 @@ use App\Http\Controllers\Controller;
 class TagsController extends Controller
 {
     //
-    public function index(){
-        return Tag::with('posts')->get();
+    public function index(Request $request){
+        if($request->ajax()){
+            return Tag::with('posts')->get();
+        }
     }
-    public function posts($id){
-        return Tag::find($id)->posts()->with(['category','user','tags','images'])->get();
+    public function posts($id,Request $request){
+        if($request->ajax()){
+            return Tag::find($id)->posts()->with(['category','user','tags','images'])->get();
+        }
     }
 }

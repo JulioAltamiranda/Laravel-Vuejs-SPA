@@ -10,7 +10,9 @@ class CategoriesController extends Controller
 {
     //
     public function index(){
-        return Category::with('posts')->get();
+        if(request()->ajax()){
+            return Category::with('posts')->get();
+        }
     }
     public function posts($id){
         return Category::find($id)->posts()->with(['category','user','tags','images'])->get();

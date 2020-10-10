@@ -62,7 +62,7 @@ export default {
     },
     created() {
         var ide = this.$route.params.id;
-        axios.get("http://127.0.0.1:8000/api/posts/" + ide).then(response => {
+        axios.get("/api/posts/" + ide).then(response => {
             this.post = response.data;
             this.show=false;
         });

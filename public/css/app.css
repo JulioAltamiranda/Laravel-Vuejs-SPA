@@ -65,6 +65,16 @@ header .topBar .navbar .navbar-menu li a.router-link-exact-active {
   color: #fff;
 }
 
+header .topBar .navbar .navbar-menu li.login a {
+  border: 1px solid #e1f6ff73;
+  padding: 6px 6px 6px 6px;
+  border-radius: 4px;
+}
+
+header .topBar .navbar .navbar-menu li.login a:hover {
+  border-color: #fff;
+}
+
 @media screen and (max-width: 997px) {
   header .topBar .navbar .navbar-menu {
     display: none;
@@ -114,7 +124,7 @@ header .topBar .navbar .mobile-menu ul.active {
   visibility: visible;
   margin-top: 14px;
   opacity: 1;
-  height: 170px;
+  height: 211px;
 }
 
 header.sticky {

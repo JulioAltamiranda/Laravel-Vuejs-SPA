@@ -41,7 +41,7 @@ export default {
     },
     methods:{
       getPosts(){
-        axios.get("http://127.0.0.1:8000/api/posts").then((response) => {
+        axios.get("/api/posts").then((response) => {
         this.posts=response.data;
         this.show=false;
         }).catch(error=>{
@@ -49,7 +49,7 @@ export default {
         })
       },
       getCategories(){
-        axios.get('http://127.0.0.1:8000/api/categories').then(response=>{
+        axios.get('/api/categories').then(response=>{
         this.categories=response.data;
         this.show=false;
         }).catch(error=>{
@@ -57,7 +57,7 @@ export default {
         })
       },
       getTags(){
-        axios.get('http://127.0.0.1:8000/api/tags').then(response=>{
+        axios.get('/api/tags').then(response=>{
         this.tags=response.data;
         this.show=false;
         }).catch(error=>{

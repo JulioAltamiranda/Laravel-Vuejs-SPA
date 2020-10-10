@@ -9,6 +9,7 @@
                     <li><router-link to="/archivo">Archivo</router-link></li>
                     <li><router-link to="/galeria">Galería</router-link></li>
                     <li><router-link to="/contacto">Contacto</router-link></li>
+                    <li class="login"><a href="http://127.0.0.1:8000/dashboard">Ingresar</a></li>
                 </ul>
                 <!-- Mobile menu -->
                 <div class="mobile-menu">
@@ -18,6 +19,7 @@
                         <li><router-link to="/archivo">Archivo</router-link></li>
                         <li><router-link to="/galeria">Galería</router-link></li>
                         <li><router-link to="/contacto">Contacto</router-link></li>
+                        <li class="login"><a href="http://127.0.0.1:8000/dashboard">Ingresar</a></li>
                     </ul>
                 </div>
             </nav>

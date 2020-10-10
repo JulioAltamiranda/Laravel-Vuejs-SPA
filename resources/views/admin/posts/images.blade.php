@@ -29,7 +29,7 @@
                                 <div class="carousel-inner" >
                                     @foreach($post->images as $image)
                                         <div  class="{{$loop->first?'carousel-item active':'carousel-item'}}">
-                                        <img src="{{$image->name}}" class="img-fluid" alt="" style="position: relative;">
+                                        <img src="{{$image->name}}" class="img-fluid" alt="" style="position: relative;max-height:230px;width:100%;">
                                         <form action="{{route('admin.posts.images.destroy',$image)}}" style="position: absolute;top:0px;z-index:101;" method="POST">
                                             @csrf
                                             @method('delete')
@@ -72,11 +72,11 @@
 @push('scripts')
     <script src="/assets/plugins/dropzone-master/dist/dropzone.js"></script>
 <style>
-   .dropzone{
+    .dropzone{
        border: 1px dashed #e9ecef;
        color: #2d3748;
        font-size: 14px;
-   }
+    }
 </style>
 
     <script>
@@ -87,7 +87,6 @@
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
-
             dictDefaultMessage: 'Arrastra las imágenes o haz clic aquí para subirlas'
         });
         Dropzone.autoDiscover = false;

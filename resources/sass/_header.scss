@@ -34,7 +34,16 @@ header{
                             color: #fff;
                         }  
                     }
+                    &.login a{
+                        border:1px solid #e1f6ff73;padding:6px 6px 6px 6px;
+                        border-radius: 4px;
+                        &:hover{
+                            border-color:#fff;
+                        }
+                        
+                    }
                 }
+
                 @media screen and (max-width:997px){
                     display: none;
                 }
@@ -74,7 +83,7 @@ header{
                     visibility: visible;
                     margin-top: 14px;
                     opacity: 1;
-                    height: 170px;   
+                    height: 211px;   
                 }
             }
             

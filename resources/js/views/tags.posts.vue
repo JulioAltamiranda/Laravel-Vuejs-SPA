@@ -31,7 +31,7 @@ export default {
     },
     created(){
         var ide = this.$route.params.id;
-        axios.get('http://127.0.0.1:8000/api/tags/posts/' + ide).then(response=>{
+        axios.get('/api/tags/posts/' + ide).then(response=>{
             this.posts=response.data;
             this.show=false
         });
