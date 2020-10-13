@@ -45,7 +45,7 @@ class PostsController extends Controller
     }
     public function edit(Post $post)
     {
-
+        $this->authorize('update',$post);
         return view('admin.posts.edit', [
             'post' => $post,
             'categories' => Category::all(),
@@ -54,6 +54,7 @@ class PostsController extends Controller
     }
     public function update(SavePostRequest $request, Post $post)
     {
+        $this->authorize('update',$post);
         $tags = [];
         if($request->tags){
            foreach ($request->tags as $tag) {
@@ -66,6 +67,7 @@ class PostsController extends Controller
     }
     public function destroy(Post $post)
     {
+        $this->authorize('delete',$post);
         if($post->images){
             foreach($post->images as $image){
 
