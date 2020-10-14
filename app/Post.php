@@ -18,7 +18,6 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
-    
     public function setCategoryIdAttribute($name)
     {
         $this->attributes['category_id'] = Category::find($name) ? $name : Category::create(['name' => $name])->id;
@@ -30,16 +29,6 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-    public function contain(Tag $paramTag)
-    {
-        foreach ($this->tags as $tag) {
-            if ($tag->id == $paramTag->id) {
-                return true;
-                break;
-            }
-        }
-        return false;
     }
     public function images(){
         return $this->hasMany(Image::class);
