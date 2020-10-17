@@ -83,6 +83,7 @@ class UsersController extends Controller
         //removing posts from user
         $user->posts()->delete();
         $user->delete();
+        
         return redirect()->route('admin.users.index')->with('status', 'Usuario eliminado');
     }
 
