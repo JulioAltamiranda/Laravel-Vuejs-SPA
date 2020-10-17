@@ -2,26 +2,13 @@
 
 namespace App\Policies;
 
-
-use App\User;
 use Spatie\Permission\Models\Role;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class RolePolicy
 {
     use HandlesAuthorization;
-
-    
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function viewAny(User $user)
-    {
-        //
-    }
 
     /**
      * Determine whether the user can view the model.
@@ -32,8 +19,7 @@ class RolePolicy
      */
     public function view(User $user, Role $role)
     {
-        //
-        return $user->hasRole('admin');
+        return $user->hasRole('admin') || $user->hasPermissionTo('roles.index');
     }
 
     /**
@@ -44,7 +30,7 @@ class RolePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->hasRole('admin')||$user->hasPermissionTo('roles.create');
     }
 
     /**
@@ -56,8 +42,7 @@ class RolePolicy
      */
     public function update(User $user, Role $role)
     {
-        //
-        return $user->hasRole('admin');
+        return $user->hasRole('admin') || $user->hasPermissionTo('roles.update');
     }
 
     /**
@@ -69,10 +54,10 @@ class RolePolicy
      */
     public function delete(User $user, Role $role)
     {
-        //
-
-        return $user->hasRole('admin');
-       
+        if($role->id===1){
+            return false;
+        }
+        return $user->hasRole('admin') || $user->hasPermissionTo('roles.destroy');
     }
 
     /**

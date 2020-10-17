@@ -12,20 +12,22 @@ class RolesController extends Controller
     //
     public function index()
     {
+        $this->authorize('view',new Role);
         return view('admin.roles.index', ['roles' => Role::all()]);
     }
     public function create()
     {
+        $this->authorize('create',new Role);
         return view('admin.roles.create', ['permissions' => Permission::all()]);
     }
     public function edit(Role $role)
     {
-
+        $this->authorize('update',$role);
         return view('admin.roles.edit', ['role' => $role, 'permissions' => Permission::all()]);
     }
     public function store(Request $request, Role $role)
     {
-
+        $this->authorize('create',new Role);
         $data = $this->validate($request, [
             'name' => 'required|max:255|string|unique:roles',
             'display_name' => 'required|max:255|string',
@@ -43,7 +45,7 @@ class RolesController extends Controller
     }
     public function update(Request $request, Role $role)
     {
-        
+        $this->authorize('update',$role);
         $data = $this->validate($request, [
             'name' => 'required|max:255|string',
             'display_name' => 'required|max:255|string',
@@ -61,7 +63,9 @@ class RolesController extends Controller
     }
     public function destroy(Role $role)
     {
+        $this->authorize('delete',$role);
+        $this->authorize('delete',$role);
         $role->delete();
-        return redirect()->route('admin.roles')->with('status','Se ha eliminado un role');
+        return redirect()->route('admin.roles.index')->with('status','Se ha eliminado un role');
     }
 }

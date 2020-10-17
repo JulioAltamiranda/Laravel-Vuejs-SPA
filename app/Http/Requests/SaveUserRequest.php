@@ -43,7 +43,6 @@ class SaveUserRequest extends FormRequest
                         
                     ];
                 }
-              
             }
             else{
                 if(auth()->user()->hasRole('admin')){
@@ -52,17 +51,12 @@ class SaveUserRequest extends FormRequest
                         'name' => 'required|max:255|string',
                         'email' => 'required|email|max:255|string',
                         'roles'=> 'required'
-                        
-                        
                     ];
                 }else{
                     return [
                         //
                         'name' => 'required|max:255|string',
                         'email' => 'required|email|max:255|string',
-                        
-                        
-                        
                     ];
                 }
               
@@ -82,7 +76,6 @@ class SaveUserRequest extends FormRequest
                     'name' => 'required|max:255|string',
                     'email' => 'required|unique:users|email|max:255|string',
                     'password' => 'required|confirmed|min:8|string',
-                  
                 ];
             }
          

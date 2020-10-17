@@ -6,7 +6,6 @@
                 <h5 class="card-title py-4">Actualizar usuario</h5>
             </div>
             <div class="card-body">
-                
                 <form action="{{ route('admin.users.update', $user) }}" method="POST">
                     @csrf
                     @method('put')
@@ -38,7 +37,6 @@
                         <label for="password_confirmation">Repite la contraseña</label>
                         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Repetir contraseña">
                     </div>
-                    @can('roles.create', auth()->user())
                     <div class="form-group">
                         <label for="roles">Roles</label>
                         <select class="select2 custom-control" name="roles[]" id="roles" style="width:100%" multiple="multiple">
@@ -47,7 +45,6 @@
                             @endforeach
                         </select>
                     </div>
-                    @endcan
                     <button class="btn btn-primary">Guardar</button>
                 </form>
             </div>

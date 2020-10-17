@@ -15,10 +15,7 @@
                                 <th>Categoría</th>
                                 <th>Creación</th>
                                 <th>Propietario</th>
-                                @if(auth()->user()->can('posts.update')||auth()->user()->can('posts.destroy')||auth()->user()->can('posts.show')
-                                    ||auth()->user()->can('posts.images.index'))
                                 <th>Opciones</th>
-                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -29,24 +26,16 @@
                                     <td>{{ $post->category->name }}</td>
                                     <td>{{ $post->created_at }}</td>
                                     <td>{{ $post->user->name }}</td>
-                                    @if(auth()->user()->can('posts.update')||auth()->user()->can('posts.destroy')||auth()->user()->can('posts.show')
-                                    ||auth()->user()->can('posts.images.index'))
                                     <td class="options">
-                                        @can('posts.show', auth()->user())
                                         <a href="http://127.0.0.1:8000/posts/{{$post->id}}" class="btn btn-sm btn-secondary text-white" data-toggle="tooltip"
                                             title="Ver post"><i class="ti-eye font-bold"></i></a>
-                                        @endcan
-                                        @can('posts.images.index', auth()->user())
+                                        
                                         <a href="{{ route('admin.posts.images', $post) }}"
                                             class="btn btn-sm btn-warning text-white" data-toggle="tooltip"
                                             title="Imágenes"><i class="ti-gallery font-bold"></i></a>
-                                        @endcan
-                                        @can('posts.update', auth()->user())
                                         <a href="{{ route('admin.posts.edit', $post) }}"
                                             class="btn btn-sm btn-primary text-white" data-toggle="tooltip"
                                             title="Editar post"><i class="ti-pencil font-bold"></i></a>
-                                        @endcan
-                                        @can('posts.destroy', auth()->user())
                                         <form action="{{ route('admin.posts.destroy', $post) }}" method="POST"
                                             >
                                             @csrf
@@ -54,9 +43,7 @@
                                             <button class="btn btn-sm btn-danger" data-toggle="tooltip"
                                                 title="Eliminar post"><i class="ti-trash font-bold"></i></button>
                                         </form>
-                                        @endcan
                                     </td>
-                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

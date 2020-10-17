@@ -12,35 +12,11 @@ class PostPolicy
 
     public function before($user)
     {
-        if ( $user->hasRole('admin') )
-        {
+        if ($user->hasRole('admin')) {
             return true;
         }
     }
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function viewAny(User $user)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Post  $post
-     * @return mixed
-     */
-    public function view(User $user, Post $post)
-    {
-        //
-        return $user->id == $post->user_id;
-    }
-
+    
     /**
      * Determine whether the user can create models.
      *
@@ -49,7 +25,8 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        //
+
+        return $user->hasPermissionTo('posts.create');
     }
 
     /**
@@ -61,8 +38,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        //
-        return $user->id == $post->user_id;
+        return $user->id === $post->user_id || $user->hasPermissionTo('posts.update');
     }
 
     /**
@@ -75,30 +51,8 @@ class PostPolicy
     public function delete(User $user, Post $post)
     {
         //
-        return $user->id == $post->user_id;
+        return $user->id === $post->user_id || $user->hasPermissionTo('posts.destroy');
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Post  $post
-     * @return mixed
-     */
-    public function restore(User $user, Post $post)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Post  $post
-     * @return mixed
-     */
-    public function forceDelete(User $user, Post $post)
-    {
-        //
-    }
+ 
 }

@@ -27,6 +27,6 @@ class PostsImagesController extends Controller
         $imageName=str_replace('storage','public',$image->name);
         Storage::delete($imageName);
         $image->delete();
-        return redirect()->route('admin.posts')->with('status','Se ha eliminado una foto');
+        return redirect()->route('admin.posts.index')->with('status','Se ha eliminado una foto');
     }
 }

@@ -14,26 +14,29 @@ class UsersController extends Controller
     //}
     public function index()
     {
-        if (auth()->user()->hasRole('admin')) {
-
+        if (auth()->user()->hasRole('admin') || auth()->user()->can('users.index')) {
+            
             $users = User::all();
         } else {
+
             $users = User::whereId(auth()->user()->id)->get();
         }
+
         return view('admin.users.index', compact('users'));
     }
     public function create()
     {
+        $this->authorize('create',new User);
         return view('admin.users.create', ['roles' => Role::all()]);
     }
     public function edit(User $user)
     {
-        $this->authorize('view', $user);
+        $this->authorize('update',$user);
         return view('admin.users.edit', ['user' => $user, 'roles' => Role::all()]);
     }
     public function store(SaveUserRequest $request)
     {
-
+        $this->authorize('create',new User);
         $user = User::create($request->validated());
         $user->assignRole($request->roles);
         $user->password = bcrypt($request->password);
@@ -43,14 +46,15 @@ class UsersController extends Controller
 
     public function update(SaveUserRequest $request, User $user)
     {
-        $this->authorize('update', $user);
-        if($user->hasRole('admin')){
+        $this->authorize('update',$user);
+        if($request->roles){
 
             $user->roles()->detach();
             $user->assignRole($request->roles);
         }
         $user->update($request->validated());
         if ($request->password) {
+
             $user->password = bcrypt($request->password);
             $user->save();
         }
@@ -58,7 +62,7 @@ class UsersController extends Controller
     }
     public function destroy(User $user)
     {
-        $this->authorize('delete', $user);
+        $this->authorize('delete',$user);
         //removing tags from posts
         foreach($user->posts as $post){
             
@@ -68,6 +72,7 @@ class UsersController extends Controller
         //removing images from posts
         foreach($user->posts as $post){
             if($post->images){
+                
                 foreach($post->images as $image){
                     $imageName=str_replace('storage','public',$image->name);
                     Storage::delete($imageName);
@@ -78,10 +83,7 @@ class UsersController extends Controller
         //removing posts from user
         $user->posts()->delete();
         $user->delete();
-        return redirect()->route('admin.users')->with('status', 'Usuario eliminado');
+        return redirect()->route('admin.users.index')->with('status', 'Usuario eliminado');
     }
 
-    public function prueba(){
-        return view('admin.prueba');
-    }
 }

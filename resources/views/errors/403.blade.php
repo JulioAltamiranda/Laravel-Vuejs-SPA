@@ -14,7 +14,7 @@
             <h1 class="display-1">403</h1>
             <h3>Prohibido</h3>
             <p>Lo sentimos, no tienes permiso para esta acción</p>
-            <a href="{{ url()->previous() }}" class="btn btn-outline-primary ml-2">Volver</a>
+            <a href="{{route('admin') }}" class="btn btn-outline-primary ml-2">Back to home</a>
         </div>
     </div>
     

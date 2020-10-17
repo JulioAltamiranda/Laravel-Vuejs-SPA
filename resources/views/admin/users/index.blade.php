@@ -12,11 +12,8 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th>Email</th>
-                                <th>Posts</th>
-                                @if(auth()->user()->can('users.update')
-                                ||auth()->user()->can('users.destroy'))                                    
+                                <th>Posts</th>                             
                                 <th>Opciones</th>
-                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -25,15 +22,13 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{!! $user->email !!}</td>
                                     <td>{{ $user->posts->count() }}</td>
-                                    @if(auth()->user()->can('users.update')
-                                    ||auth()->user()->can('users.destroy'))  
                                     <td class="options">
-                                        @can('users.update', auth()->user())
+                                        @can('update',auth()->user())
                                         <a href="{{ route('admin.users.edit', $user) }}"
                                             class="btn btn-primary btn-sm text-white" data-toggle="tooltip"
                                             title="Editar usuario"><i class="ti-pencil font-bold"></i></a>
                                         @endcan
-                                        @can('users.destroy', auth()->user())
+                                        @can('delete',auth()->user())
                                         <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
                                             @csrf
                                             @method('delete')
@@ -42,7 +37,6 @@
                                         </form>
                                         @endcan
                                     </td>
-                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

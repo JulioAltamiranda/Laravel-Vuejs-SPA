@@ -25,16 +25,17 @@
                                     <td>{{ $role->display_name}}</td>
                                     @if(auth()->user()->can('roles.update')||auth()->user()->can('roles.destroy')||auth()->user()->can('roles.show'))
                                     <td class="options">
-                                        @can('roles.show', auth()->user())
+                                        @can('roles.show')
                                         <a href="{{route('admin.roles.show',$role)}}" class="btn btn-sm btn-secondary text-white" data-toggle="tooltip"
                                             title="Ver role"><i class="ti-eye font-bold"></i></a>
                                         @endcan
-                                        @can('roles.update', auth()->user())
+                                        @can('roles.update')
                                         <a href="{{ route('admin.roles.edit', $role) }}"
                                             class="btn btn-sm btn-primary text-white" data-toggle="tooltip"
                                             title="Editar role"><i class="ti-pencil font-bold"></i></a>
                                         @endcan
-                                        @can('roles.destroy', auth()->user())
+                                        @if($role->id!=1)
+                                        @can('roles.destroy')
                                         <form action="{{ route('admin.roles.destroy', $role) }}" method="POST"
                                             style="display: inline;">
                                             @csrf
@@ -43,6 +44,7 @@
                                                 title="Eliminar role"><i class="ti-trash font-bold"></i></button>
                                         </form>
                                         @endcan
+                                        @endif
                                     </td>
                                     @endif
                                 </tr>

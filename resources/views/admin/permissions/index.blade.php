@@ -26,7 +26,9 @@
                             <tr>
                                 <th>Identificador</th>
                                 <th>Nombre</th>
+                                @can('permissions.update')
                                 <th>Opciones</th>
+                                @endcan
                             </tr>
                         </thead>
                         <tbody>
@@ -34,11 +36,13 @@
                                 <tr>
                                     <td>{{ $permission->name }}</td>
                                     <td>{{ $permission->display_name }}</td>
+                                    @can('permissions.update')  
                                     <td class="options">
                                         <a href="{{ route('admin.permissions.edit', $permission) }}"
-                                            class="btn btn-sm btn-primary text-white" data-toggle="tooltip"
-                                            title="Editar permiso"><i class="ti-pencil font-bold"></i></a>
+                                        class="btn btn-sm btn-primary text-white" data-toggle="tooltip"
+                                        title="Editar permiso"><i class="ti-pencil font-bold"></i></a>
                                     </td>
+                                    @endcan
                                 </tr>
                             @endforeach
                         </tbody>

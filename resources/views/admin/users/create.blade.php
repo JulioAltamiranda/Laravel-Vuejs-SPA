@@ -36,21 +36,20 @@
                         <label for="password_confirmation">Repite la contraseña <small class="text-muted secondary">*</small></label>
                         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Repetir contraseña">
                     </div>
-                    @can('roles.create', auth()->user())
-                        
-                    <div class="form-group">
-                        <label for="">Roles <span class="secondary">*</span></label>
-                        <select class="select2 custom-control @error('roles') is-invalid @enderror" style="width: 100%" name="roles[]" id="roles" multiple="multiple">
-                            @foreach($roles as $role)
-                            <option value="{{$role->name}}">
-                                {{$role->display_name}}
-                            </option>
-                            @endforeach
-                        </select>
-                        @error('roles')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                    @can('roles.create')
+                        <div class="form-group">
+                            <label for="">Roles <span class="secondary">*</span></label>
+                            <select class="select2 custom-control @error('roles') is-invalid @enderror" style="width: 100%" name="roles[]" id="roles" multiple="multiple">
+                                @foreach($roles as $role)
+                                <option value="{{$role->name}}">
+                                    {{$role->display_name}}
+                                </option>
+                                @endforeach
+                            </select>
+                            @error('roles')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                     @endcan
                     <button class="btn btn-primary">Guardar</button>
                 </form>

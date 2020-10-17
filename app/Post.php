@@ -34,6 +34,6 @@ class Post extends Model
         return $this->hasMany(Image::class);
     }
     public function getCreatedAtAttribute($name){
-        return Carbon::parse($name)->diffForHumans();
+        return Carbon::parse($name)->format('d-m-Y');
     }
 }

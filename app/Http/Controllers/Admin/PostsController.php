@@ -14,22 +14,22 @@ class PostsController extends Controller
     //
     public function index()
     {
-        if(auth()->user()->hasRole('admin')){
+        if(auth()->user()->hasRole('admin') || auth()->user()->hasPermissionTo('posts.index')){
             $posts=Post::all();
         }else{
             $posts = Post::whereUserId(auth()->user()->id)->with(['category:id,name', 'user:id,name'])->get();
         }
         
-
         return view('admin.posts.index', compact('posts'));
     }
     public function create()
     {
-
+        $this->authorize('create',new Post);
         return view('admin.posts.create', ['categories' => Category::all(), 'tags' => Tag::all()]);
     }
     public function store(SavePostRequest $request)
     {
+        $this->authorize('create',new Post);
         $tags = [];
         if($request->tags){
             foreach ($request->tags as $tag) {
@@ -55,6 +55,7 @@ class PostsController extends Controller
     public function update(SavePostRequest $request, Post $post)
     {
         $this->authorize('update',$post);
+        
         $tags = [];
         if($request->tags){
            foreach ($request->tags as $tag) {
@@ -78,6 +79,6 @@ class PostsController extends Controller
         }
         $post->tags()->detach();
         $post->delete();
-        return redirect()->route('admin.posts')->with('status', 'Se ha eliminado un post');
+        return redirect()->route('admin.posts.index')->with('status', 'Se ha eliminado un post');
     }
 }
