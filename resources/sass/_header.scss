@@ -3,13 +3,13 @@ header{
     background: #1c262b;
     box-shadow: 1px 1px 16px 1px #e1f6ff73;
     padding: 0;
-    transition: all .4s ease;
+    transition: all .6s ease-in-out;
     .topBar{
         width: 65%;
         margin: auto;
         color: rgba(225, 246, 255, 0.45);        
         @media screen and (max-width:997px){
-            width: 95%;
+            width: 100%;
         }
         .navbar{
             padding: 1em 0;
@@ -46,12 +46,14 @@ header{
 
                 @media screen and (max-width:997px){
                     display: none;
+                    
                 }
             }
             .mobile-menu{
                 i{
                     font-size: 30px;
                     color: white!important;
+                    padding: 12px;
                     display: none;
                     @media screen and (max-width:997px){
                         display: block;
@@ -59,42 +61,55 @@ header{
                 }
                 ul{
                     list-style: none;
-                    transition: all .2s ease;
-                    height: 0;
-                    visibility: hidden;
-                    opacity: 0;
+                    transition: all .4s ease;
+                    max-height: 0;
+                    overflow: hidden;
+                    text-align: center;
+                    text-transform: uppercase;
                     li{
-                        border: 1px solid white;
                         border-width: 100%;
-                        padding: 10px;
+                        padding: 12px;
+                        transition: all .4s ease;
                         a{
                             color:#e1f6ff73;
                             transition: all .4s ease;
-                            &:hover{
-                                color: white;
-                            }
+
                             &.router-link-exact-active {
                                 color: #fff;
                             }  
                         }
+                        &:hover{
+                            background: #283136;
+                        }
+                        &:hover a{
+                            color: white;
+                        }
                     }
                 }
                 ul.active{
-                    visibility: visible;
-                    margin-top: 14px;
-                    opacity: 1;
-                    height: 211px;   
+                    overflow: visible;
+                    max-height: 1000px;
+                    
                 }
+                
+            }
+            @media screen and (max-width:997px){
+                padding:  0;
+            
             }
             
         }
     }
 }
-header.sticky{
+.sticky{
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     padding: 0.3em;
 }
+.sticky + main{
+    padding-top: 70px;
+}
+
 /*============= /HEADER =============*/

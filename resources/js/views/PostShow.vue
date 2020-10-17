@@ -15,13 +15,13 @@
                                     v-for="image in post.images"
                                     :key="image.id"
                                 >
-                                    <img :src="image.name" alt="" />
+                                    <img class="full" :src="image.name" alt="" />
                                 </slide>
                             </carousel>
                         </div>
-                        <div class="iframe" v-else-if="post.iframe!=''" v-html="post.iframe"></div>
+                        <div class="iframe full" v-else-if="post.iframe!=''" v-html="post.iframe"></div>
                         <p class="category">{{ post.category.name }}</p>
-                        <h2>{{ post.title }}.</h2>
+                        <h2 class="post-title">{{ post.title }}.</h2>
                         <div class="post-meta">
                             <p class="owner">{{ post.user.name }}</p>
                             <span></span>
@@ -84,4 +84,16 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.post-title{
+    display: block!important;
+   
+}
+.full, .full iframe{
+    min-width: 100%!important;
+    min-height: 100%!important;
+    max-height: 100%!important;
+    max-height: 100%!important;
+}
+
+</style>

@@ -14,8 +14,8 @@ class PostsController extends Controller
     //
     public function index()
     {
-        if(auth()->user()->hasRole('admin') || auth()->user()->hasPermissionTo('posts.index')){
-            $posts=Post::all();
+        if(auth()->user()->can('posts.index')){
+            $posts=Post::with(['category:id,name','user:id,name'])->get();
         }else{
             $posts = Post::whereUserId(auth()->user()->id)->with(['category:id,name', 'user:id,name'])->get();
         }

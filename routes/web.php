@@ -24,7 +24,7 @@ Route::middleware('auth')->namespace('admin')->prefix('dashboard')->group(functi
     Route::post('posts/{post}/images', 'PostsImagesController@store')->name('admin.posts.images.store');
 
     //users
-    Route::resource('users', 'UsersController', ['as' => 'admin']);
+    Route::resource('users', 'UsersController', ['except'=>'show','as' => 'admin']);
 
     //permissions
     Route::get('permissions', 'PermissionsController@index')->name('admin.permissions')->middleware('permission:permissions.index');
