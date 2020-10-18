@@ -13,8 +13,9 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
         //
-        Category::create(['name'=>'Diseño web']);
-        Category::create(['name'=>'Desarrollo de apps']);
+        Category::create(['name'=>'Web design']);
+        Category::create(['name'=>'Web development']);
+        Category::create(['name'=>'App development']);
 
 
     }
