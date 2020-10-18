@@ -28,7 +28,7 @@ npm install
 ```
 10. Genera una llave para el proyecto: `php artisan key:generate`
 11. Ejecuta las migraciones y seeds: `php artisan migrate --seed`
-12. Ejecuta el comando `php artisan storage:link`
+12. Si deseas agregar imágenes a las publicaciones, ejecuta este comando `php artisan storage:link` después de haber creado por lo menos una imagen
 13. Ejecuta el servidor: `php artisan serve`
 14. Dirigete a la ruta /dashboard e inicia sesión con el usuario:
 * Administrador: ```admin@admin.com``` password:```123123```
