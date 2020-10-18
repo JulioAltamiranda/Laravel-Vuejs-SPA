@@ -35,7 +35,7 @@ Route::middleware('auth')->namespace('admin')->prefix('dashboard')->group(functi
     Route::resource('roles', 'RolesController',['as'=>'admin']);
 
 });
-
+//login
 Auth::routes(['register' => false, 'reset' => false, 'confirm' => false, 'verify' => false]);
 
 
