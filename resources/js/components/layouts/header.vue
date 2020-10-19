@@ -10,7 +10,7 @@
                     <li><router-link to="/galeria">Galería</router-link></li>
                     <li><router-link to="/contacto">Contacto</router-link></li>
                     <li class="login">
-                        <a href="http://127.0.0.1:8000/dashboard">Ingresar</a>
+                        <a href="/dashboard">Ingresar</a>
                     </li>
                 </ul>
                 <!-- Mobile menu -->
@@ -28,7 +28,7 @@
                             <router-link to="/contacto">Contacto</router-link>
                         </li>
                         <li class="login">
-                            <a href="http://127.0.0.1:8000/dashboard"
+                            <a href="/dashboard"
                                 >Ingresar</a
                             >
                         </li>
@@ -48,10 +48,8 @@ export default {
         };
     },
     mounted() {
-        var headerTop = document.getElementsByClassName("header-topbar")[0];
-        var header = document.querySelector("header");
         this.removeActive();
-        this.addSticky(headerTop, header);
+        this.addSticky();
     },
     methods: {
         active() {
@@ -64,7 +62,7 @@ export default {
                 }
             });
         },
-        addSticky(headerTop, header) {
+        addSticky() {
             window.addEventListener("scroll", () => {
                 if (window.pageYOffset > 3) {
                     this.sticky = true;

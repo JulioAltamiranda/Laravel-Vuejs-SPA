@@ -52,14 +52,14 @@ export default {
       }
     },
     created(){
-      axios.get('http://127.0.0.1:8000/api/posts/latest').then(response=>{
+      axios.get('/api/posts/latest').then(response=>{
         this.posts=response.data;
       })
-      axios.get('http://127.0.0.1:8000/api/posts/authors').then(response=>{
+      axios.get('/api/posts/authors').then(response=>{
         this.authors=response.data;
         
       })
-      axios.get('http://127.0.0.1:8000/api/tags').then(response=>{
+      axios.get('/api/tags').then(response=>{
         this.tags=response.data;
       })
     }

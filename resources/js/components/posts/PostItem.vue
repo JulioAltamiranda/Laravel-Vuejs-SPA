@@ -14,7 +14,6 @@
         </div>
         <p class="category">{{post.category.name}}</p>
         <h2>{{post.title}}</h2>
-        
         <div class="post-meta">
           <p class="owner">{{post.user.name}}</p>
           <span></span>

@@ -66,7 +66,6 @@ export default {
             this.post = response.data;
             this.show=false;
         });
-        
     },
     mounted(){
         this.disqus()
@@ -89,11 +88,11 @@ export default {
     display: block!important;
    
 }
-.full, .full iframe{
+.full,.full iframe{
     min-width: 100%!important;
     min-height: 100%!important;
     max-height: 100%!important;
-    max-height: 100%!important;
+    max-width: 100%!important;
 }
 
 </style>

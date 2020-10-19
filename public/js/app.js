@@ -1909,7 +1909,6 @@ module.exports = {
 //
 //
 //
-//
 
 /***/ }),
 
@@ -2077,10 +2076,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    var headerTop = document.getElementsByClassName("header-topbar")[0];
-    var header = document.querySelector("header");
     this.removeActive();
-    this.addSticky(headerTop, header);
+    this.addSticky();
   },
   methods: {
     active: function active() {
@@ -2095,7 +2092,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    addSticky: function addSticky(headerTop, header) {
+    addSticky: function addSticky() {
       var _this2 = this;
 
       window.addEventListener("scroll", function () {
@@ -2210,7 +2207,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_0__);
-//
 //
 //
 //
@@ -2477,13 +2473,13 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://127.0.0.1:8000/api/posts/latest').then(function (response) {
+    axios.get('/api/posts/latest').then(function (response) {
       _this.posts = response.data;
     });
-    axios.get('http://127.0.0.1:8000/api/posts/authors').then(function (response) {
+    axios.get('/api/posts/authors').then(function (response) {
       _this.authors = response.data;
     });
-    axios.get('http://127.0.0.1:8000/api/tags').then(function (response) {
+    axios.get('/api/tags').then(function (response) {
       _this.tags = response.data;
     });
   }
@@ -7310,7 +7306,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.post-title{\r\n    display: block!important;\n}\n.full, .full iframe{\r\n    min-width: 100%!important;\r\n    min-height: 100%!important;\r\n    max-height: 100%!important;\r\n    max-height: 100%!important;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.post-title{\r\n    display: block!important;\n}\n.full,.full iframe{\r\n    min-width: 100%!important;\r\n    min-height: 100%!important;\r\n    max-height: 100%!important;\r\n    max-width: 100%!important;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -39626,9 +39622,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "login" }, [
-      _c("a", { attrs: { href: "http://127.0.0.1:8000/dashboard" } }, [
-        _vm._v("Ingresar")
-      ])
+      _c("a", { attrs: { href: "/dashboard" } }, [_vm._v("Ingresar")])
     ])
   },
   function() {
@@ -39636,9 +39630,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "login" }, [
-      _c("a", { attrs: { href: "http://127.0.0.1:8000/dashboard" } }, [
-        _vm._v("Ingresar")
-      ])
+      _c("a", { attrs: { href: "/dashboard" } }, [_vm._v("Ingresar")])
     ])
   }
 ]
