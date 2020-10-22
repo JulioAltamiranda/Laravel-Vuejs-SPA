@@ -1,5 +1,5 @@
 <template>
-    <div class="post">
+    <div class="post box">
         <div class="post-image" v-if="post.images && post.images.length">
             <carousel :per-page="1" :navigationEnabled="false">
                 <slide v-for="image in post.images" :key="image.id" >

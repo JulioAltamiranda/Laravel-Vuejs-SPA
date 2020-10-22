@@ -1,6 +1,6 @@
 <template>
     <layout>
-      <template slot="main-container">
+      <template slot="main">
         <div class="error-page">
             <div class="error-content">
                 <h1>Error 404</h1>

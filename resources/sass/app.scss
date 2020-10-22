@@ -16,18 +16,16 @@ body{
 @import 'header';       
 
 /*============= MAIN =============*/
+.grid{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    column-gap: 12px;  
+}
 .main{
     width: 65%;
     padding: 16px 0 0 0;
     margin-left: auto;
-    margin-right: auto;
-    display: grid;
-    grid-template-columns: 30% auto;
-    column-gap: 12px;    
-    @media screen and (max-width:997px){
-        grid-template-columns: 100%;
-          
-    }
+    margin-right: auto;  
     @media screen and (max-width:997px){
         width: 95%;
     }
@@ -38,14 +36,24 @@ body{
         max-height: 300px;   
         min-width: 100%;      
     }
-    
-    .post{
+    .categories-tags{
+        grid-column: span 4;
+        @media screen and (max-width:728px){
+            grid-column: span 12;
+        }
+    }
+    .posts{
+        grid-column: span 8;
+        @media screen and (max-width:728px){
+            grid-column: span 12;
+        }
+    }
+    .box{
         border-radius:4px;
         box-shadow: 0 1px 2px gray;
         padding: 1.5em;
         background: #fff;
         margin-bottom: 12px;
-        
         .category{
             color: #aaa;
             font-weight:500;
@@ -139,7 +147,14 @@ body{
             }
         }
        
-    }           
+    }
+    .postShow{
+        grid-column: 1/13;
+    }
+     .comments{
+        grid-column: 1/13;
+    }
+          
     
     .categories,.tags{
         border-radius:4px;
@@ -182,7 +197,14 @@ body{
             max-width: inherit;
             max-height: inherit;
         }
+        
     }
+    .full,.full iframe{
+        min-width: 100%!important;
+        min-height: 100%!important;
+        max-height: 100%!important;
+        max-width: 100%!important;
+    }    
 
 }
 .content-tags{

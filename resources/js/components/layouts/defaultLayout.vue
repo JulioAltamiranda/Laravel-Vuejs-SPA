@@ -1,7 +1,7 @@
 <template>
     <div>
         <headerCmt></headerCmt>
-        <slot name="main-container"></slot>
+        <slot name="main"></slot>
         <footerCmt></footerCmt>
     </div>
 </template>

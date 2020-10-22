@@ -1,7 +1,7 @@
 <template>
     <layout>
-        <template slot="main-container">
-            <main class="main main-contact">
+        <template slot="main">
+            <main class="main grid main-contact">
                 <div class="contact">
                     <form class="form" @submit.prevent="submit">
                         <div

@@ -1,13 +1,13 @@
 <template>
     <layout>
-      <template slot="main-container">
-        <main class="main tags-posts">
+      <template slot="main">
+        <main class="main">
             <transition name="fade">
                 <div class="loader" v-show="show">
                     <div class="loading"></div>
                 </div>
             </transition>
-            <posts :posts="posts" v-if="!show"></posts>
+            <posts :posts="posts" class="postShow" v-if="!show"></posts>
         </main>
       </template>
     </layout>
@@ -38,10 +38,3 @@ export default {
     }
 }
 </script>
-
-<style>
-.tags-posts{
-    grid-template-columns:100%;
-}
-
-</style>

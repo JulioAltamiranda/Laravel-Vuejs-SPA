@@ -1,6 +1,6 @@
 <template>
     <layout>
-        <template slot="main-container">
+        <template slot="main">
             <main class="main" style="grid-template-columns:100%;">
                 <transition name="fade">
                     <div class="loader" v-show="show">

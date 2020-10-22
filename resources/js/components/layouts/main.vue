@@ -1,6 +1,6 @@
 <template>
   <!-- Main -->
-  <main class="main">
+  <main class="main grid">
     <transition name="fade">
       <div class="loader" v-show="show">
         <div class="loading"></div>
@@ -67,7 +67,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

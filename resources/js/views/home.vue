@@ -1,6 +1,6 @@
 <template>
     <layout>
-      <template slot="main-container">
+      <template slot="main">
         <main-container></main-container>
       </template>
     </layout>

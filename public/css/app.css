@@ -147,27 +147,25 @@ header .topBar .navbar .mobile-menu ul.active {
 
 .sticky + main {
   padding-top: 70px;
+  padding-bottom: 70px;
 }
 
 /*============= /HEADER =============*/
 
 /*============= MAIN =============*/
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  -moz-column-gap: 12px;
+       column-gap: 12px;
+}
+
 .main {
   width: 65%;
   padding: 16px 0 0 0;
   margin-left: auto;
   margin-right: auto;
-  display: grid;
-  grid-template-columns: 30% auto;
-  -moz-column-gap: 12px;
-       column-gap: 12px;
-}
-
-@media screen and (max-width: 997px) {
-  .main {
-    grid-template-columns: 100%;
-  }
 }
 
 @media screen and (max-width: 997px) {
@@ -184,7 +182,27 @@ header .topBar .navbar .mobile-menu ul.active {
   min-width: 100%;
 }
 
-.main .post {
+.main .categories-tags {
+  grid-column: span 4;
+}
+
+@media screen and (max-width: 728px) {
+  .main .categories-tags {
+    grid-column: span 12;
+  }
+}
+
+.main .posts {
+  grid-column: span 8;
+}
+
+@media screen and (max-width: 728px) {
+  .main .posts {
+    grid-column: span 12;
+  }
+}
+
+.main .box {
   border-radius: 4px;
   box-shadow: 0 1px 2px gray;
   padding: 1.5em;
@@ -192,7 +210,7 @@ header .topBar .navbar .mobile-menu ul.active {
   margin-bottom: 12px;
 }
 
-.main .post .category {
+.main .box .category {
   color: #aaa;
   font-weight: 500;
   margin-top: 12px;
@@ -201,12 +219,12 @@ header .topBar .navbar .mobile-menu ul.active {
 }
 
 @media screen and (max-width: 997px) {
-  .main .post .category {
+  .main .box .category {
     font-size: 14px;
   }
 }
 
-.main .post .post-text {
+.main .box .post-text {
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 1.5em;
@@ -214,7 +232,7 @@ header .topBar .navbar .mobile-menu ul.active {
   word-wrap: break-word;
 }
 
-.main .post .post-meta {
+.main .box .post-meta {
   margin-top: 12px;
   font-size: 10px;
   color: #aaa;
@@ -223,7 +241,7 @@ header .topBar .navbar .mobile-menu ul.active {
   align-items: center;
 }
 
-.main .post .post-meta span {
+.main .box .post-meta span {
   height: 3px;
   width: 3px;
   border-radius: 4px;
@@ -232,7 +250,7 @@ header .topBar .navbar .mobile-menu ul.active {
   margin-right: 5px;
 }
 
-.main .post .img-content {
+.main .box .img-content {
   min-height: 260px;
   max-height: 260px;
   max-width: 100%;
@@ -240,32 +258,32 @@ header .topBar .navbar .mobile-menu ul.active {
 }
 
 @media screen and (max-width: 520px) {
-  .main .post .img-content {
+  .main .box .img-content {
     max-height: 220px;
     min-height: 220px;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .main .post .img-content {
+  .main .box .img-content {
     max-height: 150px;
     min-height: 150px;
   }
 }
 
-.main .post .img-content img {
+.main .box .img-content img {
   min-width: inherit;
   min-height: inherit;
   max-width: 100%;
   max-height: inherit;
 }
 
-.main .post .img-content:hover .VueCarousel-pagination {
+.main .box .img-content:hover .VueCarousel-pagination {
   overflow: visible !important;
   max-height: 1000px !important;
 }
 
-.main .post h2 {
+.main .box h2 {
   font-size: 25px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -275,12 +293,12 @@ header .topBar .navbar .mobile-menu ul.active {
 }
 
 @media screen and (max-width: 997px) {
-  .main .post h2 {
+  .main .box h2 {
     font-size: 20px;
   }
 }
 
-.main .post hr {
+.main .box hr {
   background: #d1d0d0;
   height: 2px;
   width: 100%;
@@ -288,7 +306,7 @@ header .topBar .navbar .mobile-menu ul.active {
   margin-bottom: 22px;
 }
 
-.main .post .readMore {
+.main .box .readMore {
   font-size: 13px;
   color: #345;
   border: 1px solid #aaa;
@@ -297,10 +315,18 @@ header .topBar .navbar .mobile-menu ul.active {
   transition: color 0.4s ease;
 }
 
-.main .post .readMore:hover {
+.main .box .readMore:hover {
   border-color: #345;
   color: white;
   background: #345;
+}
+
+.main .postShow {
+  grid-column: 1/13;
+}
+
+.main .comments {
+  grid-column: 1/13;
 }
 
 .main .categories,
@@ -346,6 +372,14 @@ header .topBar .navbar .mobile-menu ul.active {
   min-height: inherit;
   max-width: inherit;
   max-height: inherit;
+}
+
+.main .full,
+.main .full iframe {
+  min-width: 100% !important;
+  min-height: 100% !important;
+  max-height: 100% !important;
+  max-width: 100% !important;
 }
 
 .content-tags {

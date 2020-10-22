@@ -1,14 +1,14 @@
 <template>
     <layout>
-        <template slot="main-container">
-            <main class="main" style="grid-template-columns:minmax(100%,100%);margin-bottom:9em;">
+        <template slot="main">
+            <main class="main">
                 <transition name="fade">
                     <div class="loader" v-show="show">
                         <div class="loading"></div>
                     </div>
                 </transition>
-                <div class="posts">
-                    <div class="post" v-if="!show">
+                <div class="posts postShow">
+                    <div class="post box" v-if="!show">
                         <div class="post-img" v-if="post.images && post.images.length">
                             <carousel :per-page="1" >
                                 <slide
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="post">
+                <div class="comments box">
                     <div id="disqus_thread"></div>
                 </div>
             </main>    
@@ -82,17 +82,3 @@ export default {
     }
 };
 </script>
-
-<style>
-.post-title{
-    display: block!important;
-   
-}
-.full,.full iframe{
-    min-width: 100%!important;
-    min-height: 100%!important;
-    max-height: 100%!important;
-    max-width: 100%!important;
-}
-
-</style>

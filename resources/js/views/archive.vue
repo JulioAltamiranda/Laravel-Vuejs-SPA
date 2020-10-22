@@ -1,6 +1,6 @@
 <template>
     <layout>
-      <template slot="main-container">
+      <template slot="main">
         <main class="main main-archive">
           <div class="archive">
             <div class="latest-posts">
